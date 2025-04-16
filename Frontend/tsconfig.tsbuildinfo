@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/Footer.tsx","./src/components/Navbar.tsx","./src/pages/Create.tsx","./src/pages/Home.tsx","./src/pages/HostQuiz.tsx","./src/pages/Join.tsx","./src/pages/PlayQuiz.tsx","./vite.config.ts"],"version":"5.6.3"}
