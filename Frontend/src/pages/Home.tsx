@@ -27,19 +27,27 @@ const Home = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-[rgb(255,255,255)]">
+    <div className="flex min-h-screen flex-col bg-white">
       <Navbar />
 
       {/* Hero Section */}
-      <div className="bg-[rgb(191,215,50)] py-10 px-4  ">
+      <div className="bg-[rgb(191,215,50)] py-10 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Make learning awesome!</h1>
-          <p className="text-xl md:text-2xl mb-8">GlobQuiz! is a game-based learning platform that brings engagement and fun</p>
+          <p className="text-xl md:text-2xl mb-8">
+            GlobQuiz! is a game-based learning platform that brings engagement and fun
+          </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/create" className="border-2 border-white text-black px-6 py-3 rounded-md font-bold text-lg hover:bg-white hover:bg-opacity-20 transition-all">
+            <Link
+              to="/create"
+              className="border-2 border-white text-black px-6 py-3 rounded-md font-bold text-lg hover:bg-white hover:bg-opacity-20 transition-all"
+            >
               Create a GlobQuiz!
             </Link>
-            <Link to="/join" className="border-2 border-white text-black py-3 rounded-md font-bold text-lg hover:bg-white hover:bg-opacity-10 transition-all">
+            <Link
+              to="/join"
+              className="border-2 border-white text-black py-3 px-6 rounded-md font-bold text-lg hover:bg-white hover:bg-opacity-10 transition-all"
+            >
               Join game
             </Link>
           </div>
@@ -48,24 +56,29 @@ const Home = () => {
 
       {/* Features Section */}
       <div className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <h2 className="text-2xl font-bold text-[#BFD732] mb-4">learning Quiz</h2>
-              <p className="text-gray-700 mb-6">Engaging group and distance learning for teachers and students.</p>
-              <Link to="/create" className="text-[#BFD732] font-bold hover:underline">Learn more &gt;</Link>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Learning Quiz",
+              description: "Engaging group and distance learning for teachers and students.",
+            },
+            {
+              title: "GlobQuiz",
+              description: "Deliver training, presentations, meetings and events in-person or online.",
+            },
+            {
+              title: "For Fun",
+              description: "Fun quizzes for parties and gatherings.",
+            },
+          ].map((feature, index) => (
+            <div key={index} className="bg-white p-6 rounded-xl shadow-md">
+              <h2 className="text-2xl font-bold text-[#BFD732] mb-4">{feature.title}</h2>
+              <p className="text-gray-700 mb-6">{feature.description}</p>
+              <Link to="/create" className="text-[#BFD732] font-bold hover:underline">
+                Learn more &gt;
+              </Link>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <h2 className="text-2xl font-bold text-[#BFD732] mb-4">Globquiz</h2>
-              <p className="text-gray-700 mb-6">Deliver training, presentations, meetings and events in-person or online.</p>
-              <Link to="/create" className="text-[#BFD732] font-bold hover:underline">Learn more &gt;</Link>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-md">
-              <h2 className="text-2xl font-bold text-[#BFD732] mb-4">For Fun</h2>
-              <p className="text-gray-700 mb-6">Funny Quiz for party</p>
-              <Link to="/create" className="text-[#BFD732] font-bold hover:underline">Learn more &gt;</Link>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
@@ -74,21 +87,19 @@ const Home = () => {
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-[#BFD732] mb-10">How GlobQuiz! works</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center">
-              <div className="w-20 h-20 rounded-full bg-[#BFD732] text-white flex items-center justify-center text-2xl font-bold mb-4">1</div>
-              <h3 className="text-xl font-bold mb-2">Create</h3>
-              <p className="text-gray-700">Create engaging quizzes in minutes</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-20 h-20 rounded-full bg-[#BFD732] text-white flex items-center justify-center text-2xl font-bold mb-4">2</div>
-              <h3 className="text-xl font-bold mb-2">Host</h3>
-              <p className="text-gray-700">Host a live game or assign as homework</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="w-20 h-20 rounded-full bg-[#BFD732] text-white flex items-center justify-center text-2xl font-bold mb-4">3</div>
-              <h3 className="text-xl font-bold mb-2">Play</h3>
-              <p className="text-gray-700">Join with a PIN and play from any device</p>
-            </div>
+            {["Create", "Host", "Play"].map((step, index) => (
+              <div key={step} className="flex flex-col items-center">
+                <div className="w-20 h-20 rounded-full bg-[#BFD732] text-white flex items-center justify-center text-2xl font-bold mb-4">
+                  {index + 1}
+                </div>
+                <h3 className="text-xl font-bold mb-2">{step}</h3>
+                <p className="text-gray-700">
+                  {step === "Create" && "Create engaging quizzes in minutes"}
+                  {step === "Host" && "Host a live game or assign as homework"}
+                  {step === "Play" && "Join with a PIN and play from any device"}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -100,8 +111,8 @@ const Home = () => {
           {savedQuizzes.length === 0 ? (
             <div className="text-center py-8">
               <p className="text-gray-600 text-lg mb-4">You haven't created any quizzes yet.</p>
-              <Link 
-                to="/create" 
+              <Link
+                to="/create"
                 className="inline-block bg-[#BFD732] text-white px-6 py-3 rounded-md font-bold hover:bg-opacity-90 transition-all"
               >
                 Create Your First Quiz
@@ -112,8 +123,10 @@ const Home = () => {
               {savedQuizzes.map((quiz) => (
                 <div key={quiz.id} className="bg-gray-50 rounded-xl shadow-md p-6">
                   <h3 className="text-xl font-bold text-gray-800 mb-2">{quiz.title}</h3>
-                  <p className="text-gray-600 mb-2 line-clamp-2">{quiz.description || 'No description'}</p>
-                  <p className="text-sm text-gray-500 mb-4">
+                  <p className="text-gray-600 mb-2 line-clamp-2">
+                    {quiz.description || 'No description'}
+                  </p>
+                  <p className="text-sm text-gray-500 mb-2">
                     Created: {new Date(quiz.createdAt).toLocaleDateString()}
                   </p>
                   <p className="text-sm text-gray-500 mb-4">

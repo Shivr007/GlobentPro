@@ -31,15 +31,21 @@ const HostQuiz = () => {
   const [gameActive, setGameActive] = useState(false);
   const [showResults, setShowResults] = useState(false);
 
-  // In a real app, this would fetch from a server
   useEffect(() => {
-    const savedQuizzes = JSON.parse(localStorage.getItem('quizzes') || '[]');
-    const foundQuiz = savedQuizzes.find((q: Quiz) => q.id === id);
-
-    if (foundQuiz) {
-      setQuiz(foundQuiz);
-    }
+    const fetchQuiz = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/api/quiz/${id}`);
+        const data = await res.json();
+        setQuiz(data);
+      } catch (err) {
+        console.error('Error fetching quiz:', err);
+      }
+    };
+  
+    fetchQuiz();
   }, [id]);
+  
+  
 
   const startGame = () => {
     setGameActive(true);
