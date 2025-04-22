@@ -86,7 +86,7 @@ const HostQuiz = () => {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">Loading quiz...</h1>
           <p>If the quiz doesn't load, it may not exist.</p>
-          <Link to="/" className="text-[#46178f] font-bold hover:underline mt-4 inline-block">
+          <Link to="/" className="text-[#BFD732] font-bold hover:underline mt-4 inline-block">
             Back to Home
           </Link>
         </div>
@@ -97,8 +97,8 @@ const HostQuiz = () => {
   // Lobby screen before starting
   if (!gameActive) {
     return (
-      <div className="flex min-h-screen flex-col bg-[#46178f] text-white">
-        <header className="p-4 bg-[#3b1378] shadow-md">
+      <div className="flex min-h-screen flex-col bg-[#BFD732] text-gray-900">
+        <header className="p-4 bg-[#a8bd2b] shadow-md">
           <h1 className="text-2xl font-bold">{quiz.title}</h1>
         </header>
 
@@ -106,9 +106,9 @@ const HostQuiz = () => {
           <div className="text-center max-w-2xl">
             <h2 className="text-4xl font-bold mb-8">Game PIN: {id}</h2>
             <p className="text-xl mb-4">Share this PIN with your players.</p>
-            <p className="text-xl mb-8">Tell them to go to <span className="font-bold">kahoot.it</span> and enter this PIN.</p>
+            <p className="text-xl mb-8">Tell them to go to <span className="font-bold">GlobQuiz</span> and enter this PIN.</p>
 
-            <div className="mb-8 p-6 bg-white text-[#46178f] rounded-lg">
+            <div className="mb-8 p-6 bg-white text-[#BFD732] rounded-lg">
               <h3 className="text-2xl font-bold mb-4">Game Info</h3>
               <p className="mb-2"><span className="font-bold">Questions:</span> {quiz.questions.length}</p>
               <p><span className="font-bold">Created:</span> {new Date(quiz.createdAt).toLocaleDateString()}</p>
@@ -116,7 +116,7 @@ const HostQuiz = () => {
 
             <button
               onClick={startGame}
-              className="bg-white text-[#46178f] px-8 py-4 rounded-md text-xl font-bold hover:bg-opacity-90 transition-all"
+              className="bg-white text-[#BFD732] px-8 py-4 rounded-md text-xl font-bold hover:bg-[#e6f3b3] transition-all"
             >
               Start Game
             </button>
@@ -129,8 +129,8 @@ const HostQuiz = () => {
   // Results screen
   if (showResults) {
     return (
-      <div className="flex min-h-screen flex-col bg-[#46178f] text-white">
-        <header className="p-4 bg-[#3b1378] shadow-md">
+      <div className="flex min-h-screen flex-col bg-[#BFD732] text-gray-900">
+        <header className="p-4 bg-[#a8bd2b] shadow-md">
           <h1 className="text-2xl font-bold">{quiz.title}</h1>
         </header>
 
@@ -142,7 +142,7 @@ const HostQuiz = () => {
             <div className="flex space-x-4">
               <Link
                 to="/"
-                className="bg-white text-[#46178f] px-6 py-3 rounded-md font-bold hover:bg-opacity-90 transition-all"
+                className="bg-white text-[#BFD732] px-6 py-3 rounded-md font-bold hover:bg-[#e6f3b3] transition-all"
               >
                 Back to Home
               </Link>
@@ -152,7 +152,7 @@ const HostQuiz = () => {
                   setCurrentQuestionIndex(-1);
                   setShowResults(false);
                 }}
-                className="border-2 border-white text-white px-6 py-3 rounded-md font-bold hover:bg-white hover:bg-opacity-10 transition-all"
+                className="border-2 border-[#BFD732] text-[#BFD732] px-6 py-3 rounded-md font-bold hover:bg-[#e6f3b3] hover:text-gray-900 transition-all"
               >
                 Play Again
               </button>
@@ -167,8 +167,8 @@ const HostQuiz = () => {
   const currentQuestion = quiz.questions[currentQuestionIndex];
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#46178f] text-white">
-      <header className="p-4 bg-[#3b1378] shadow-md flex justify-between items-center">
+    <div className="flex min-h-screen flex-col bg-[#BFD732] text-gray-900">
+      <header className="p-4 bg-[#a8bd2b] shadow-md flex justify-between items-center">
         <h1 className="text-xl font-bold">{quiz.title}</h1>
         <div className="text-2xl font-bold">{timeLeft}s</div>
       </header>
@@ -184,10 +184,10 @@ const HostQuiz = () => {
             <div
               key={answer.id}
               className={`p-6 rounded-lg ${
-                index === 0 ? 'bg-red-500' :
-                index === 1 ? 'bg-blue-500' :
-                index === 2 ? 'bg-yellow-500' :
-                'bg-green-500'
+                index === 0 ? 'bg-[#f87171] text-white' :
+                index === 1 ? 'bg-[#60a5fa] text-white' :
+                index === 2 ? 'bg-[#fde047] text-gray-900' :
+                'bg-[#34d399] text-white'
               } flex justify-between items-center`}
             >
               <span className="text-xl font-bold">{answer.text}</span>
@@ -202,7 +202,7 @@ const HostQuiz = () => {
           <div className="flex justify-center">
             <button
               onClick={nextQuestion}
-              className="bg-white text-[#46178f] px-6 py-3 rounded-md font-bold hover:bg-opacity-90 transition-all"
+              className="bg-white text-[#BFD732] px-6 py-3 rounded-md font-bold hover:bg-[#e6f3b3] transition-all"
             >
               {currentQuestionIndex < quiz.questions.length - 1 ? 'Next Question' : 'Show Results'}
             </button>

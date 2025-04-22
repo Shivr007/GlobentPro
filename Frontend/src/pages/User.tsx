@@ -153,7 +153,7 @@ const User = () => {
   // --- JSX Rendering ---
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-white to-gray-50">
-      <Navbar />
+      <Navbar hideMyQuizzes={true} />
 
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-[rgb(191,215,50)] to-[rgb(171,195,30)] py-16 px-4 transform transition-all duration-500 hover:scale-[1.02]">

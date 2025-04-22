@@ -12,7 +12,11 @@ interface QuizSearchItem {
   title: string;
 }
 
-const Navbar = () => {
+interface NavbarProps {
+  hideMyQuizzes?: boolean;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ hideMyQuizzes = false }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -128,9 +132,11 @@ const Navbar = () => {
             {/* --- Links shown when logged in --- */}
             {isLoggedIn && (
               <>
-                <Link to="/my-quizzes" className="text-gray-700 font-semibold hover:text-[rgb(191,215,50)] transition-colors">
-                  My Quizzes
-                </Link>
+                {!hideMyQuizzes && (
+                  <Link to="/my-quizzes" className="text-gray-700 font-semibold hover:text-[rgb(191,215,50)] transition-colors">
+                    My Quizzes
+                  </Link>
+                )}
                 <Link to="/profile" className="text-gray-700 font-semibold hover:text-[rgb(191,215,50)] transition-colors">
                   Profile
                 </Link>
